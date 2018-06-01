@@ -50,8 +50,8 @@ public class AppController : MonoBehaviour
 
         syncUIFromState();
     }
-	
-	void Update ()
+
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
@@ -63,7 +63,7 @@ public class AppController : MonoBehaviour
             syncUIFromState();
         }
 
-        if(Input.GetKeyDown(KeyCode.Comma))
+        if (Input.GetKeyDown(KeyCode.Comma))
         {
             CurrentState.FaceIndex--;
             syncUIFromState();
@@ -85,6 +85,11 @@ public class AppController : MonoBehaviour
         {
             CurrentState.IsModelVisible = !CurrentState.IsModelVisible;
             syncUIFromState();
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Persistance.Instance.Reset();
         }
     }
 

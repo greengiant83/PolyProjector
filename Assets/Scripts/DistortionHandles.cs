@@ -39,6 +39,7 @@ public class DistortionHandles : MonoBehaviour
         {
             Handles[i].StoreOriginalPositions();
         }
+        Persistance.Instance.Save();
     }
 
     public void OnSourceHandlesChanged()
@@ -51,5 +52,6 @@ public class DistortionHandles : MonoBehaviour
             handle.transform.localPosition = pos;
             handle.StoreOriginalPositions();
         }
+        Persistance.Instance.Save();
     }
 }

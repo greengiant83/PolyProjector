@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Zoom>0.169999972</Zoom>
+  <CameraPosition>
+    <x>-0.08091998</x>
+    <y>0.007819998</y>
+    <z>1</z>
+  </CameraPosition>
+  <CornerTL>
+    <x>7.15123558</x>
+    <y>3.644785</y>
+    <z>0</z>
+  </CornerTL>
+  <CornerTR>
+    <x>-8.707157</x>
+    <y>5.234197</y>
+    <z>0</z>
+  </CornerTR>
+  <CornerBR>
+    <x>-9.467271</x>
+    <y>-4.64557</y>
+    <z>0</z>
+  </CornerBR>
+  <CornerBL>
+    <x>7.733571</x>
+    <y>-4.472413</y>
+    <z>0</z>
+  </CornerBL>
+</Settings>
