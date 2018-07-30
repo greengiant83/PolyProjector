@@ -18,6 +18,11 @@ public class RotateTo : MonoBehaviour
         if(isActive)
         {
             this.transform.localRotation = Quaternion.Slerp(this.transform.localRotation, targetRot, Speed);
+            if(Quaternion.Angle(this.transform.localRotation, targetRot) < 0.1f)
+            {
+                Debug.Log("Rot done");
+                isActive = false;
+            }
         }
 	}
 

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class FaceVisualizer : MonoBehaviour
@@ -86,5 +87,16 @@ public class FaceVisualizer : MonoBehaviour
         direction = face.Normal;
         rot = Quaternion.FromToRotation(direction, Vector3.forward);
         ObjectRotator.GetComponent<RotateTo>().SetTargetRot(rot);
+
+        var previewLabelName = "previewLabel" + AppController.Instance.CurrentState.FaceIndex;
+        if (GameObject.Find(previewLabelName) == null)
+        {
+            var previewLabel = Instantiate<GameObject>(FaceLabel.gameObject);
+            previewLabel.name = previewLabelName;
+            previewLabel.transform.SetParent(OnObjectFace.transform, false);
+            previewLabel.transform.SetParent(OnObjectFace.transform.parent, true);
+            previewLabel.layer = LayerMask.NameToLayer("Distortion");
+            previewLabel.GetComponent<TextMesh>().color = Color.white;
+        }
     }
 }

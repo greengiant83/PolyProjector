@@ -41,7 +41,8 @@ public class DistortionHandle : MonoBehaviour
 
         var delta = Input.mousePosition - lastMousePos;
         delta.x *= -1;
-        transform.localPosition += delta * Sensitivity;
+        //transform.localPosition += delta * Sensitivity;
+        Corner.localPosition += delta * Sensitivity;
         lastMousePos = Input.mousePosition;
 
         Parent.UpdateCorners(this);

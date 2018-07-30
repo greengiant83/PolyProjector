@@ -139,8 +139,17 @@ public static class DistortionHelper
     */
 
 
-    public static Vector3 TransferPoint(float xI, float yI, Vector2[] sourceCorners, Vector2[] destinationCorners)
+    public static Vector3 TransferPoint(float xI, float yI, Vector2[] sourceCorners, Vector2[] destinationCorners, bool log = false)
     {
+        
+        float distance = 0;
+        for (int i = 0; i < 4; i++)
+        {
+            distance += Vector3.Distance(sourceCorners[i], destinationCorners[i]);
+        }
+        if (distance == 0) return new Vector3(xI, yI, 0);
+        
+
         float ADDING = 0.001f; // to avoid dividing by zero
 
         var xA = sourceCorners[0].x;

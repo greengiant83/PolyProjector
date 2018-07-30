@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ControllerState
@@ -35,6 +36,7 @@ public class AppController : MonoBehaviour
     GameObject previewArea;
     GameObject distortionArea;
     GameObject projectionFace;
+    Camera projectionCamera;
     TextMesh faceLabel;    
 
 	void Start ()
@@ -47,7 +49,7 @@ public class AppController : MonoBehaviour
         distortionArea = GameObject.Find("Distortion Area");
         projectionFace = GameObject.Find("Projection Face");
         faceLabel = GameObject.Find("Face Label").GetComponent<TextMesh>();
-
+        projectionCamera = GameObject.Find("Projection Camera").GetComponent<Camera>();
         syncUIFromState();
     }
 
@@ -87,7 +89,7 @@ public class AppController : MonoBehaviour
             syncUIFromState();
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && CurrentState.IsCalibrating)
         {
             Persistance.Instance.Reset();
         }
@@ -103,8 +105,9 @@ public class AppController : MonoBehaviour
         previewArea.SetActive(!CurrentState.IsCalibrating && CurrentState.IsModelVisible);
         projectionFace.SetActive(!CurrentState.IsCalibrating);
         faceLabel.gameObject.SetActive(!CurrentState.IsCalibrating);
+        projectionCamera.backgroundColor = CurrentState.IsCalibrating ? Color.cyan : Color.black;
 
-        faceVisualizer.ShowFace();
         faceLabel.text = CurrentState.FaceIndex.ToString("00");
+        faceVisualizer.ShowFace();
     }
 }

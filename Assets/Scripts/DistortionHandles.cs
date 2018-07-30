@@ -21,6 +21,7 @@ public class DistortionHandles : MonoBehaviour
 
     public void UpdateCorners(DistortionHandle sender)
     {
+        return;
         for (int i = 0; i < 4; i++)
         {
             sourcePoints[i] = Handles[i].OriginalHandlePosition;
@@ -29,7 +30,7 @@ public class DistortionHandles : MonoBehaviour
 
         for (int i = 0; i < 4; i++)
         {
-            Handles[i].Corner.localPosition = DistortionHelper.TransferPoint(Handles[i].OriginalCornerPosition.x, Handles[i].OriginalCornerPosition.y, sourcePoints, destinationPoints);
+            Handles[i].Corner.localPosition = DistortionHelper.TransferPoint(Handles[i].OriginalCornerPosition.x, Handles[i].OriginalCornerPosition.y, sourcePoints, destinationPoints, true);
         }
     }
 
@@ -52,6 +53,7 @@ public class DistortionHandles : MonoBehaviour
             handle.transform.localPosition = pos;
             handle.StoreOriginalPositions();
         }
+        UpdateCorners(null);
         Persistance.Instance.Save();
     }
 }
